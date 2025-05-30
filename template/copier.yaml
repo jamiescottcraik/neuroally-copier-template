@@ -47,7 +47,7 @@ description:
 github_username:
   type: str
   help: "Your GitHub username or org (for badge and repo links)"
-  default: "neuroallyai"
+  default: "jamiescottcraik"
 
 repo_url:
   type: str
