@@ -1,0 +1,18 @@
+from providers.base import ProviderBase
+from config.settings import settings
+
+class {{ ml_provider|capitalize }}Provider(ProviderBase):
+    """
+    Provider for {{ ml_provider|capitalize }}
+    """
+    def __init__(self):
+        self.api_key = settings.{{ ml_provider }}_api_key
+        if not self.api_key:
+            raise ValueError("{{ ml_provider|upper }}_API_KEY not set.")
+
+    def example(self):
+        return "Hello from {{ ml_provider|capitalize }}Provider"
+
+    def call(self, prompt):
+        # TODO: Implement real API call for {{ ml_provider|capitalize }}
+        return f"Echo: {prompt}"

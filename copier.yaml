@@ -1,0 +1,163 @@
+_min_copier_version: "9.0"
+
+copier_template_version:
+  type: str
+  help: "Template version (internal, for upgrade tracking)"
+  default: "2025.05.29"
+
+generated_on:
+  type: str
+  help: "Date this project was generated (auto-filled at creation)"
+  default: "{% now 'utc', '%Y-%m-%d' %}"
+
+project_name:
+  type: str
+  help: "Project name (human readable, e.g. NeuroAlly AI)"
+  default: "NeuroAlly AI"
+
+project_slug:
+  type: str
+  help: "Project slug (all lowercase, hyphen or underscore, e.g. neuroally-ai or neuroally_ai)"
+  default: "{{ project_name|lower|replace(' ', '-') }}"
+
+package_name:
+  type: str
+  help: "Python package import name (snake_case, e.g. neuroally_ai)"
+  default: "{{ project_name|lower|replace(' ', '_') }}"
+
+python_version:
+  type: str
+  help: "Target Python version for tools (e.g. 3.11, 3.10)"
+  default: "3.11"
+  choices:
+    - "3.8"
+    - "3.9"
+    - "3.10"
+    - "3.11"
+    - "3.12"
+    - "3.13"
+
+author_name:
+  type: str
+  help: "Project author (your name)"
+  default: "Jamie Scott Craik"
+
+description:
+  type: str
+  help: "Short project description (1 sentence, shown in README and repo metadata)"
+  default: "A robust AI project scaffold with modular API support."
+
+github_username:
+  type: str
+  help: "Your GitHub username or org (for badge and repo links)"
+  default: "neuroallyai"
+
+repo_url:
+  type: str
+  help: "GitHub repository URL (used for badges and docs links)"
+  default: "https://github.com/{{ github_username }}/{{ project_slug }}"
+
+main_category:
+  type: str
+  help: "Primary AI API category for your project (choose one to start—more can be added later)"
+  default: "llms"
+  choices:
+    - llms
+    - vision
+    - speech
+    - generative
+    - nlp
+    - ml_platform
+
+llm_provider:
+  type: str
+  help: "Select your Large Language Model (LLM) provider"
+  default: "openai"
+  choices:
+    - openai
+    - google
+    - anthropic
+    - huggingface
+    - cohere
+  when: "{{ main_category == 'llms' }}"
+
+vision_provider:
+  type: str
+  help: "Select your Computer Vision API provider"
+  default: "google_vision"
+  choices:
+    - google_vision
+    - rekognition
+    - azure_vision
+    - clarifai
+    - imagga
+  when: "{{ main_category == 'vision' }}"
+
+speech_provider:
+  type: str
+  help: "Select your Speech Recognition/Synthesis API provider"
+  default: "google_speech"
+  choices:
+    - google_speech
+    - amazon_transcribe
+    - amazon_polly
+    - assemblyai
+    - azure_speech
+  when: "{{ main_category == 'speech' }}"
+
+generative_provider:
+  type: str
+  help: "Select your Generative AI provider (image/music/text)"
+  default: "dalle"
+  choices:
+    - dalle
+    - stable_diffusion
+    - deepai
+    - imagen
+    - magenta
+  when: "{{ main_category == 'generative' }}"
+
+nlp_provider:
+  type: str
+  help: "Select your Natural Language Processing (NLP) API provider"
+  default: "google_nlp"
+  choices:
+    - google_nlp
+    - watson_nlu
+    - aws_comprehend
+    - aylien
+  when: "{{ main_category == 'nlp' }}"
+
+ml_platform_provider:
+  type: str
+  help: "Select your Machine Learning Platform provider"
+  default: "vertex_ai"
+  choices:
+    - vertex_ai
+    - sagemaker
+    - azure_ml
+  when: "{{ main_category == 'ml_platform' }}"
+
+license:
+  type: str
+  help: "Project license"
+  default: "MIT"
+  choices:
+    - MIT
+    - Apache-2.0
+    - GPL-3.0
+
+add_conda_env:
+  type: bool
+  help: "Include environment.yml for Conda support?"
+  default: true
+
+add_requirements_txt:
+  type: bool
+  help: "Include requirements.txt for UV/pip installs?"
+  default: true
+
+add_contributing:
+  type: bool
+  help: "Include a CONTRIBUTING.md with setup and contribution guidelines?"
+  default: true

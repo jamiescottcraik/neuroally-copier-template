@@ -1,0 +1,30 @@
+"""
+src/providers/base.py
+
+Abstract base class for all provider integrations (LLMs, vision, speech, etc.).
+Enforces a standard interface for all provider classes.
+"""
+
+from abc import ABC, abstractmethod
+
+class BaseProvider(ABC):
+    """
+    Abstract base provider interface.
+    All provider classes (OpenAI, VertexAI, Gemini, etc.) should inherit from this.
+    """
+
+    @abstractmethod
+    def generate(self, prompt: str, **kwargs):
+        """
+        Generate output from the provider given a prompt.
+        Args:
+            prompt (str): The input prompt or query.
+            **kwargs: Provider-specific arguments.
+
+        Returns:
+            Any: The provider's response (str, dict, etc.).
+        """
+        pass
+
+    # Add more abstract methods as your project needs:
+    # e.g., async_generate, get_embeddings, classify, etc.

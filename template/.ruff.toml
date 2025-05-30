@@ -1,0 +1,58 @@
+# .ruff.toml
+
+# Set this to match your stack!
+target-version = "py{{ python_version }}"  # e.g. "py3.11"
+
+src = ["src", "tests"]
+line-length = 88
+
+# Tight, broad by default. Prune rules as you go.
+select = [
+    "E",    # pycodestyle errors
+    "F",    # pyflakes
+    "B",    # flake8-bugbear
+    "I",    # isort (import sorting)
+    "UP",   # pyupgrade
+]
+
+ignore = [
+    "E501",     # Black handles line length
+    "PLR0913",  # "Too many arguments" -- not helpful for data code
+    # Add more here if they’re noisy
+]
+
+exclude = [
+    ".git",
+    ".venv",
+    "venv",
+    "env",
+    "build",
+    "dist",
+    "__pycache__",
+    "*.pyc",
+    "*.pyo",
+    "*.egg-info",
+    "migrations",
+    ".ipynb_checkpoints",
+]
+
+extend-include = ["*.py", "*.ipynb"]
+fix = true
+show-source = true
+dummy-variable-rgx = "^_"
+
+[isort]
+combine-as-imports = true
+force-single-line = false
+known-first-party = ["src"]
+known-third-party = [
+    "numpy", "pandas", "sklearn", "matplotlib",
+    "requests", "scipy", "joblib", "openai", "torch", "pytest", "fastapi"
+    # Add/remove to match your actual stack
+]
+
+[format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "lf"

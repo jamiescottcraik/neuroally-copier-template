@@ -1,0 +1,99 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pkl
+*.pickle
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.env
+.venv
+venv/
+ENV/
+env/
+pip-log.txt
+pip-delete-this-directory.txt
+site/
+.mypy_cache/
+.pytest_cache/
+.dmypy.json
+.tox/
+coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pyre/
+.pytype/
+
+# ---- Jupyter Notebooks ----
+.ipynb_checkpoints
+
+# ---- VS Code ----
+.vscode/
+
+# ---- PyCharm ----
+.idea/
+*.iml
+
+# ---- MacOS ----
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+*.swp
+
+# ---- Linux ----
+*~
+.nfs*
+
+# ---- Windows ----
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# ---- Logs and Temp ----
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+
+# ---- Data & Model Outputs ----
+data/raw/
+data/interim/
+data/processed/
+models/
+outputs/
+results/
+checkpoints/
+
+# ---- Environments ----
+.env/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# ---- Cookiecutter/Scaffold ----
+cookiecutter-*/   # Remove if not using cookiecutter templates
+
+# ---- Misc ----
+*.orig
+*.db
+
+# ---- Don't ignore poetry.lock ----
+# Commit poetry.lock for reproducible installs!
+# Remove '*.lock' ignore.

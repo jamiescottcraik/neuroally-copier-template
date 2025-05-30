@@ -1,0 +1,206 @@
+# {{ package_name|replace("_", " ")|title }}: Modular AI Scaffold
+
+> **Generated:** {{ generated_on }} &nbsp; | &nbsp; **Template version:** {{ copier_template_version }}
+
+<!-- Badges: Auto-populated at project generation -->
+
+[![CI](https://github.com/{{ github_username }}/{{ project_slug }}/actions/workflows/ci.yml/badge.svg)](https://github.com/{{ github_username }}/{{ project_slug }}/actions/workflows/ci.yml)
+[![Docs](https://github.com/{{ github_username }}/{{ project_slug }}/actions/workflows/docs.yml/badge.svg)](https://github.com/{{ github_username }}/{{ project_slug }}/actions/workflows/docs.yml)
+[![Coverage Status](https://img.shields.io/codecov/c/github/{{ github_username }}/{{ project_slug }}?logo=codecov)](https://app.codecov.io/gh/{{ github_username }}/{{ project_slug }})
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+[![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg?logo=python&logoColor=white)](https://github.com/psf/black)
+[![Lint: Ruff](https://img.shields.io/badge/lint-Ruff-009dff?logo=python&logoColor=white)](https://github.com/astral-sh/ruff)
+[![Typing: mypy](https://img.shields.io/badge/typing-mypy-2A6BDA?logo=python&logoColor=white)](http://mypy-lang.org/)
+[![License: {{ license }}](https://img.shields.io/badge/license-{{ license|urlencode }}-yellow.svg)](LICENSE)
+[![Python Version](https://img.shields.io/badge/python-{{ python_version }}%2B-blue?logo=python)](https://www.python.org/)
+
+[![Docs: latest](https://img.shields.io/badge/docs-latest-blue.svg?logo=readthedocs)](https://{{ github_username }}.github.io/{{ project_slug }}/)
+
+[![OpenAI API](https://img.shields.io/badge/OpenAI-API-10a37f?logo=openai)](https://platform.openai.com/docs/api-reference)
+[![Gemini API](https://img.shields.io/badge/Gemini-API-4285F4?logo=google)](https://ai.google.dev/gemini-api/docs)
+[![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-UI-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
+[![LangChain](https://img.shields.io/badge/LangChain-Enabled-blueviolet)](https://www.langchain.com/)
+
+---
+
+## What is this?
+
+A modular Python project scaffold for building AI, GenAI, LLM, or RAG apps—especially with accessibility and neuro-inclusivity in mind.
+
+- 🔌 **Plug-and-play AI providers:**
+  **Main Category:** `{{ main_category }}`
+  **Provider:** `{% if main_category == 'llms' %}{{ llm_provider|capitalize }}{% elif main_category == 'vision' %}{{ vision_provider|capitalize }}{% elif main_category == 'speech' %}{{ speech_provider|capitalize }}{% elif main_category == 'generative' %}{{ generative_provider|capitalize }}{% elif main_category == 'nlp' %}{{ nlp_provider|capitalize }}{% elif main_category == 'ml_platform' %}{{ ml_platform_provider|capitalize }}{% endif %}`
+- ⚙️ **Copier/Template driven** — pick your API category, add providers as needed, focus only on what you want.
+- 🧑‍💻 **For beginners or pros:** Robust defaults, code guardrails, pre-wired test/dev setup, real security (never hardcode secrets).
+- ♿ **Accessibility & Responsible AI baked in:** Starter docs, presets, and config for ethical, inclusive builds.
+
+---
+
+## 🚀 Quickstart
+
+1. **Generate your project using Copier:**
+   ```bash
+   pip install copier
+   copier copy gh:{{ github_username }}/cookiecutter-neuroally-ai my_new_project
+   cd my_new_project
+````
+
+*(Pick your provider/category when prompted)*
+
+2. **Set up Python environment:**
+
+   ```bash
+   conda create -n my_new_project python={{ python_version }} -y
+   conda activate my_new_project
+   pip install poetry
+   poetry self add poetry-uv
+   poetry install
+   pre-commit install
+   ```
+
+3. **Set your API keys:**
+
+   ```bash
+   cp .env.example .env
+   # Edit .env for only the providers you want to use
+   ```
+
+4. **Run your first test:**
+
+   ```bash
+   poetry run pytest
+   ```
+
+5. **Try a real provider example:**
+
+   ```python
+   # Example for your chosen provider:
+   from providers.{{ main_category }}.{{ (
+    llm_provider if main_category == "llms" else
+    vision_provider if main_category == "vision" else
+    speech_provider if main_category == "speech" else
+    generative_provider if main_category == "generative" else
+    nlp_provider if main_category == "nlp" else
+    ml_platform_provider if main_category == "ml_platform" else
+    ""
+   ) }}_provider import {{ (
+    llm_provider if main_category == "llms" else
+    vision_provider if main_category == "vision" else
+    speech_provider if main_category == "speech" else
+    generative_provider if main_category == "generative" else
+    nlp_provider if main_category == "nlp" else
+    ml_platform_provider if main_category == "ml_platform" else
+    ""
+   )|capitalize }}Provider
+
+   provider = {{ (
+    llm_provider if main_category == "llms" else
+    vision_provider if main_category == "vision" else
+    speech_provider if main_category == "speech" else
+    generative_provider if main_category == "generative" else
+    nlp_provider if main_category == "nlp" else
+    ml_platform_provider if main_category == "ml_platform" else
+    ""
+   )|capitalize }}Provider()
+   print(provider.example())
+   ```
+
+---
+
+## 📦 Modular Provider Structure
+
+Add/replace only what you need (your choice was **{{ main_category|capitalize }}**):
+
+* `providers/llms/` — LLMs: OpenAI, Gemini, Anthropic, Cohere, HuggingFace, etc.
+* `providers/vision/` — Computer vision: Google, AWS, Azure, Clarifai, Imagga
+* `providers/speech/` — Speech-to-text: Google, AWS, Azure, AssemblyAI, Polly, etc.
+* `providers/generative/` — Image & music generation: DALL-E, Stable Diffusion, DeepAI, Magenta
+* `providers/nlp/` — NLP APIs: Google NLP, Watson, AWS Comprehend, Aylien
+* `providers/ml_platform/` — ML Ops: Vertex AI, SageMaker, Azure ML
+
+**Only fill in keys in `.env` for what you use. Everything else is ignored by default.**
+
+---
+
+## 🗂️ Project Structure
+
+```text
+your_project/
+├── .env.example
+├── pyproject.toml
+├── README.md
+├── src/
+│   ├── providers/
+│   │   ├── {{ main_category }}/
+│   │   │   ├── {{ (
+    llm_provider if main_category == "llms" else
+    vision_provider if main_category == "vision" else
+    speech_provider if main_category == "speech" else
+    generative_provider if main_category == "generative" else
+    nlp_provider if main_category == "nlp" else
+    ml_platform_provider if main_category == "ml_platform" else
+    ""
+   ) }}_provider.py
+│   │   └── __init__.py
+│   ├── config/
+│   │   └── settings.py
+│   ├── core/
+│   ├── data/
+│   ├── features/
+│   ├── models/
+│   ├── visualization/
+│   ├── main.py
+│   └── ...
+├── tests/
+├── notebooks/
+├── reports/
+│   └── figures/
+├── references/
+└── ...
+```
+
+---
+
+### **Pro Tip: Folder Intent**
+
+* `api/` — All API endpoints (FastAPI, Flask, etc).
+  *Business logic must be imported from `core/` or `service/`, never defined directly in API routes.*
+* `core/` — Core business and data logic, reusable everywhere.
+* `data/` — Data loading, saving, and processing utilities.
+* `features/`, `models/`, `providers/` — Modular ML/AI components; extend, swap, or ignore as needed.
+* `visualization/` — Plotting and reporting code.
+* `utils/` — Shared helpers and utilities.
+* `tests/` — All tests.
+* `notebooks/` — Jupyter and exploratory notebooks.
+* `reports/figures/` — All output plots and figures.
+* `references/` — Papers, cheat sheets, or web docs.
+
+---
+
+## 💡 Why NeuroAlly.AI?
+
+* **Mission-driven:** Accessible & inclusive AI—supports veterans, neurodivergent, disabled, and open collaboration.
+* **Learning-first:** Mapped to the NeuroAlly.AI GenAI Learning Roadmap—each feature = a skill.
+* **Safe by design:** Pre-commit hooks, type checking, test coverage, and secret isolation baked in.
+* **Zero vendor lock:** Modular provider files—swap, add, or ignore any API.
+
+---
+
+## 🤝 Contribution & License
+
+* **{{ license }} License** — open and reusable.
+* **Contributions welcome:** see [CONTRIBUTING.md](CONTRIBUTING.md).
+* Badges for fun, code for real: if it’s not practical, we don’t ship it.
+
+---
+
+## 🙌 Credits & Contact
+
+* Project lead: [{{ author_name }}](https://github.com/{{ github_username }}) ([jamie.craik@icloud.com](mailto:jamie.craik@icloud.com))
+* [NeuroAlly.AI](https://neuroally.ai/)
+* Thanks to the veterans, disabled, and neurodivergent communities inspiring this scaffold.
+
+---
+
+## Let’s build accessible, ethical AI—one project at a time.

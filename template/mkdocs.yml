@@ -1,0 +1,65 @@
+site_name: NeuroAlly AI
+site_url: https://your-org.github.io/your-repo/
+repo_url: https://github.com/your-org/your-repo
+repo_name: your-org/your-repo
+
+theme:
+  name: material
+  language: en
+  logo: assets/logo.png
+  favicon: assets/favicon.ico
+  features:
+    - navigation.instant
+    - navigation.sections
+    - navigation.top
+    - toc.integrate
+    - content.code.annotate
+    - content.tabs.link
+    - search.highlight
+    - search.suggest
+    - header.autohide
+    - content.action.edit     # <-- Show "Edit on GitHub" button
+  palette:
+    - scheme: default
+      primary: blue
+      accent: lime
+
+nav:
+  - Home: index.md
+  - Playground: update_playground.md
+
+plugins:
+  - search
+  - autorefs
+  - glightbox
+  - section-index
+  - git-revision-date-localized
+  - macros
+  - mike                      # <-- For versioning
+  # You can add other plugins as needed
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+  - footnotes
+  - tables
+  - pymdownx.superfences
+  - pymdownx.tabbed
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/your-org/your-repo
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/your-twitter
+
+  # Edit on GitHub config (replace with your branch and path)
+  edit_uri: edit/main/docs/
+
+# Versioning config for mike
+plugins:
+  - mike
+
+# 404 handling (MkDocs will use docs/404.md automatically)
