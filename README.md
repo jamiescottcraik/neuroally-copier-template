@@ -1,4 +1,4 @@
-# 🧠 NeuroAlly-Copier-Template
+# 🧠 NeuroAlly.AI-Copier-Template
 
 [![Coverage Status](https://img.shields.io/codecov/c/github/jamiescottcraik/neuroally-copier-template?logo=codecov)](https://app.codecov.io/gh/jamiescottcraik/neuroally-copier-template)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit\&logoColor=white)](https://github.com/pre-commit/pre-commit)
